@@ -4,13 +4,8 @@ document.getElementById("start").addEventListener("click", function(){
     var guesses = 9;
     var guessed = [];
 
-function gameover (){
-    confirm("Game Over");
-      losses=0
-      wins=0
-      guesses=9
-      guessed=[];
-}
+    
+    
   //hides the instructions to start playing the game
 
   document.getElementById("start").innerHTML = "";
@@ -18,9 +13,7 @@ function gameover (){
   function start(){
 
     //game over conditional
-    if (guesses === 0){
-      gameover();
-    }
+  
 
     //random number generator
     var compChoice = (Math.floor(Math.random()*25)+1);
@@ -41,7 +34,6 @@ function gameover (){
 
     //conditional logic to compare the user input to the computer choice
     if(userInput === compChoiceChar) {
-      
       wins++
       document.getElementById("wins").innerHTML = wins.toString();      
         console.log(wins);    
@@ -52,16 +44,24 @@ function gameover (){
       
       losses++
       document.getElementById("losses").innerHTML= losses.toString();
-      guesses--
+      guesses--;
       document.getElementById("guesses").innerHTML = guesses.toString();
         console.log(losses);      
       guessed.push(userInput);
-      document.getElementById("guessed").innerHTML=guessed.toString()
+      document.getElementById("guessed").innerHTML=guessed.toString();
+      document.getElementById("wins").innerHTML=wins.toString();
     }
     
 
     start();
-
+    
+    }
+    if (guesses === 0){
+      confirm("Game Over");
+      losses=0;
+      wins=0;
+      guesses=9;
+      guessed=[];
   }  
 }
 })
